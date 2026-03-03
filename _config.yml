@@ -24,6 +24,9 @@ excerpt_length: 50
 
 timezone: "Europe/Berlin"
 
+site-css:
+  - "/assets/css/custom-styles.css"
+
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
