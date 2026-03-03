@@ -7,7 +7,7 @@ subtitle: Software Engineer
 navbar-links:
   About Me: "aboutme"
   Projects: "projects"
-  Blog: ""
+  Blog: "/"
 
 url: "https://hubreb.github.io"
 
