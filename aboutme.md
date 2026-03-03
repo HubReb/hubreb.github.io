@@ -12,7 +12,7 @@ I don't do greenfield. I work with what's already there.
 
 I build AI-assisted tooling for legacy code migration: translation pipelines, automated code review systems, parity testing frameworks. The systems I work with use proprietary languages that no LLM has seen in training, so most of the interesting problems are about making AI useful where it has zero prior knowledge.
 
-Current stack: Python 3, Java, llama.cpp, FAISS, Claude (Opus + Sonnet), FastAPI, Docker, GitLab CI/CD, Oracle, PostgreSQL.
+Current stack: Python 3, Java, C, C++, llama.cpp, FAISS, LLM APIs, FastAPI, Docker, GitLab CI/CD, Oracle, PostgreSQL.
 
 ## Background
 
