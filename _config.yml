@@ -1,0 +1,30 @@
+remote_theme: daattali/beautiful-jekyll@6.0.1
+
+title: Rebekka Hubert
+author: Rebekka Hubert
+subtitle: Software Engineer
+
+navbar-links:
+  About Me: "aboutme"
+  Projects: "projects"
+  Blog: ""
+
+url: "https://hubreb.github.io"
+
+social-network-links:
+  github: HubReb
+  email: "hubert.rebekka@mailbox.org"
+
+share-links-active:
+  twitter: true
+  linkedin: true
+
+paginate: 5
+excerpt_length: 50
+
+timezone: "Europe/Berlin"
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-remote-theme
