@@ -54,7 +54,7 @@ The setup: FAISS for semantic search, BM25 for exact term matching, hybrid retri
 
 The difference is night and day. Without RAG, the model reviews Python code. With RAG, it reviews Python code *in the context of this specific codebase and its conventions*. The negative `retry_count` catch above? That only works because the model knows the API contract from the injected documentation.
 
-Hybrid retrieval matters because proprietary codebases have identifiers that semantic search can't handle. Internal constants, custom function names, domain-specific class names: BM25 catches these by exact match where FAISS would miss them. Neither retrieval method alone is sufficient. Together, they cover both semantic similarity and exact identifiers.
+Hybrid retrieval matters because proprietary codebases have identifiers that semantic search can't handle. Internal constants, custom function names, domain-specific class names: BM25 catches these by exact match where dense retrieval would miss them. Neither retrieval method alone is sufficient. Together, they cover both semantic similarity and exact identifiers.
 
 ## What Local LLMs Are Good At
 
@@ -84,7 +84,7 @@ For ongoing use, local inference is essentially free per review. The cost is fro
 
 ## The Tradeoff
 
-Local models are worse than cloud models. This is not a debate. GPT-4.5, Claude Opus, Gemini 3.1 Pro all produce better reviews than quantized models running on a single GPU.
+Local models are worse than cloud models. This is not a debate. GPT-5.2, Claude Opus, Gemini 3.1 Pro all produce better reviews than quantized models running on a single GPU.
 
 But "better review that violates compliance" isn't an option. "Adequate review that stays on-premises" is. And "adequate" is surprisingly good when the alternative is "no automated review at all," which is what most legacy codebases have.
 

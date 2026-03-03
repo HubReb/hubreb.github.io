@@ -36,9 +36,9 @@ A two-model pipeline translating 6,000+ scripts from a proprietary language (zer
 
 ---
 
-## AI-Assisted Y2038 Migration Strategy
+## AI-Assisted Y2038 and 32-bit to 64-bit Migration Strategy
 
-Analysis and migration strategy for Y2038 (Unix timestamp overflow) across a legacy system. AI-assisted scope reduction turned a 6-12 month estimate into 2-4 months by identifying which code paths actually touch timestamp-sensitive operations.
+Analysis and migration strategy for Y2038 (Unix timestamp overflow) and 32-bit to 64-bit transition across a legacy system. AI-assisted scope reduction turned a 6-12 month estimate into 2-4 months by identifying which code paths actually touch timestamp-sensitive and architecture-dependent operations.
 
 **Approach:**
 - Automated static analysis to identify affected code paths
