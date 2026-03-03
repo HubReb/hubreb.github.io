@@ -87,4 +87,4 @@ The database doesn't care how elegant the Python is. It cares whether the state 
 
 ---
 
-*I migrate decades-old systems to modern stacks — one script, one table, one timestamp at a time. I validate translations by asking the only witness that doesn't lie: the database. More on AI-assisted migration at [link to blog].*
+*I migrate decades-old systems to modern stacks — one script, one table, one timestamp at a time. I validate translations by asking the only witness that doesn't lie: the database. More on AI-assisted migration at [hubreb.github.io](https://hubreb.github.io/).*
