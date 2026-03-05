@@ -46,7 +46,7 @@ Analysis and migration strategy for Y2038 (Unix timestamp overflow) and 32-bit t
 - Prioritization by business impact rather than code location
 - Migration strategy that separates mechanical fixes from semantic changes
 
-**Blog post:** Coming soon
+**Blog posts:** [Y2038: When "Impossible" Means "Wrong Approach"](/blog/y2038-analysis) · [When "It Compiled" Is the Dangerous Part](/blog/lp64-analysis)
 
 ---
 
