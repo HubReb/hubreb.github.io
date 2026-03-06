@@ -50,6 +50,22 @@ Analysis and migration strategy for Y2038 (Unix timestamp overflow) and 32-bit t
 
 ---
 
+## IPC Bridge: Python 3 Migration Without Rewriting Bindings
+
+A PTY-based interprocess bridge that connects Python 3 to a legacy C runtime without touching tens of thousands of lines of C++ bindings. A marker protocol over pseudo-terminal replaces embedded interpreter integration with process-isolated communication.
+
+**Stack:** Python 3, PTY subprocess management, custom marker protocol, pytest
+
+**Key decisions:**
+- Process isolation instead of binding migration — route around the glue, don't rewrite it
+- Sequential send/wait/read protocol to avoid PTY race conditions
+- Text-based marker protocol for debuggability over efficiency
+- Repository and gateway layer on the Python 3 side for patterns that don't survive process boundaries
+
+**Blog post:** [When You Can't Embed, Bridge](/blog/ipc-bridge)
+
+---
+
 ## What's Next
 
 The translation pipeline is in early production. The bet: spec quality improves faster than script complexity increases. If that holds, the pipeline scales to the full 6,000+ script codebase. If not, the next step is fine-tuning on the growing corpus of verified translations.

@@ -2,7 +2,8 @@
 layout: post
 title: "When You Can't Embed, Bridge"
 subtitle: "How a PTY and a marker protocol replaced tens of thousands of lines of C++ bindings."
-tags: [python, c, legacy-systems, ipc, migration]
+tags: [python, c, legacy-systems, ipc, legacy-migration]
+permalink: /blog/ipc-bridge
 ---
 
 A 30+ year old ERP system. The core is C. The scripting layer is a proprietary language: thousands of business scripts, a custom interpreter embedded in the C process via tens of thousands of lines of C++ bindings.
