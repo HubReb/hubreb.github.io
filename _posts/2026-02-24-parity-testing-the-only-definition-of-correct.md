@@ -10,7 +10,7 @@ When you translate a script from a proprietary language to Python 3, how do you 
 
 Not "looks correct." Not "passes code review." Not "a senior engineer approved it." Actually correct. Functionally identical to the original. Every database write, every state change, every side effect, identical.
 
-The answer is embarrassingly simple, and it took me too long to arrive at it.
+The approach is simple, and it took me too long to arrive at it.
 
 ## The Problem With Traditional Verification
 
@@ -63,7 +63,7 @@ It doesn't catch performance regressions, non-database side effects (file writes
 
 Parity testing means accepting that the legacy system is correct by definition. Not "well-designed." Correct as in "this is what the business runs on, and changing it is a business decision, not an engineering decision."
 
-Every engineer wants to fix the bugs they find during migration. Don't. Translate first. Prove parity. Then open a ticket. Mixing migration and improvement is how legacy migrations fail.
+Every engineer wants to fix the bugs they find during migration. Don't — translate first, prove parity, then open a ticket. Mixing migration and improvement is how legacy migrations fail.
 
 The database doesn't care how elegant the Python is. It cares whether the state is identical.
 

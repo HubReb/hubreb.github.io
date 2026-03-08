@@ -8,7 +8,7 @@ permalink: /blog/ipc-bridge
 
 A 30+ year old ERP system. The core is C. The scripting layer is a proprietary language: thousands of business scripts, a custom interpreter embedded in the C process via tens of thousands of lines of C++ bindings.
 
-The migration target: Python 3. The obvious path: port the bindings. `PyString_FromString` → `PyUnicode_FromString`. `PyInt_AsLong` → `PyLong_AsLong`. `Py_InitModule` → `PyModule_Create`. Across all of them. No tests. No resources.
+The migration target: Python 3. The obvious path: port the bindings — `PyString_FromString` → `PyUnicode_FromString`, `PyInt_AsLong` → `PyLong_AsLong`, `Py_InitModule` → `PyModule_Create` — across all of them, with no tests and no resources.
 
 I didn't rewrite the bindings. I went around them.
 
@@ -26,13 +26,13 @@ Three layers: an API layer that matches the old scripting interface, a backend t
 
 ## Everything That Went Wrong
 
-**The PTY fights you.** A PTY fakes a terminal. Terminals echo input. Every command I sent came back mixed into the response. The legacy interpreter also prints initialization output on startup, which sat in the buffer and contaminated the first command's response. Intermittently. Two weeks of debugging for a one-line fix: drain the buffer after startup, before sending anything.
+**The PTY fights you.** It fakes a terminal, so terminals echo input — every command I sent came back mixed into the response. The legacy interpreter also prints initialization output on startup, which sat in the buffer and contaminated the first command's response. Intermittently. Two weeks of debugging for a one-line fix: drain the buffer after startup, before sending anything.
 
-**Bidirectional streaming doesn't work.** The constant temptation: send commands while still reading responses. Pipeline operations. Every attempt made things worse. A PTY is a single channel. Interleaving reads and writes creates race conditions that are impossible to reproduce. The answer was boring: send, wait, read, repeat. Sequential. Slow. Reliable.
+Bidirectional streaming doesn't work either. The constant temptation is to send commands while still reading responses, pipeline operations, overlap I/O. Every attempt made things worse. A PTY is a single channel and interleaving reads and writes creates race conditions that are impossible to reproduce. What works is boring: send, wait, read, repeat.
 
-**Subprocesses die.** Not a one-time fix. An ongoing reality. The legacy interpreter crashes, hangs, or silently stops responding. The transport layer needs heartbeat detection, process recovery, and clean restart. You maintain this. Permanently.
+**Subprocesses die.** The legacy interpreter crashes, hangs, or silently stops responding. The transport layer needs heartbeat detection, process recovery, and clean restart. You maintain this permanently.
 
-**Not everything crosses a process boundary.** The legacy UI framework owns the terminal and fought the bridge for control. Three quarters of all scripts don't touch UI and work fine. The rest are deferred.
+Not everything crosses a process boundary. The legacy UI framework owns the terminal and fought the bridge for control. Three quarters of all scripts don't touch UI and work fine. The rest are deferred.
 
 The old interpreter also keeps cursor state between calls: select opens a cursor, the next select continues where it left off. Across a process boundary, no shared state. Replicating it would turn the bridge into a chatty interface the PTY was never designed for. Instead: build a repository and gateway layer on the Python 3 side. Some legacy patterns need a Rosetta Stone, not a mirror.
 

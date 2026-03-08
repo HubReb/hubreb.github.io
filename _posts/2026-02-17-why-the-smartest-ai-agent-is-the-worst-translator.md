@@ -8,7 +8,7 @@ permalink: /blog/smartest-agent-worst-translator
 
 Migrating 6,000+ scripts from a proprietary language into Python 3. The language is old enough to vote. No LLM has seen it in training. The scripts run a legacy ERP system, and the only definition of "correct" is: the database looks identical after the translated version runs.
 
-My instinct said: use the best model available. Opus. Extended thinking. Maximum reasoning power. Surely the smartest model handles the unknown best.
+My instinct said: use the best model available. Opus with extended thinking, maximum reasoning power. Surely the smartest model handles the unknown best.
 
 It doesn't.
 
@@ -24,7 +24,7 @@ It explored edge cases the spec had already resolved. Considered architectural a
 
 ## What Sonnet Did
 
-Same spec. Same source script. Same prompt.
+Same spec, same source script, same prompt.
 
 Sonnet read the spec. Translated. Finished. Two hours, parity test passed.
 
@@ -32,7 +32,7 @@ No exploration. No architectural musings. Spec as ground truth, translation as m
 
 ## The Point
 
-Legacy code translation is not a reasoning problem. It's a compliance problem. The source behavior *is* the specification. The target must replicate it exactly. Creativity is a bug.
+Legacy code translation is a compliance problem, not a reasoning problem. The source behavior is the specification, and the target must replicate it exactly. Creativity is a bug.
 
 I spent a day watching Opus think beautifully about a task that needed no thinking. Sonnet delivered in two hours what Opus couldn't finish.
 

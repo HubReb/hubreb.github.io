@@ -6,9 +6,9 @@ tags: [llm, legacy-migration, prompt-engineering]
 permalink: /blog/teaching-llm-unseen-language
 ---
 
-The proprietary scripting language in this migration has zero presence on the internet. No Stack Overflow questions. No GitHub repos. No documentation outside the company. Some claim no documentation inside the company either. It's been running production workloads for over two decades, and the only people who know it are the people who wrote it.
+The proprietary scripting language in this migration has zero presence on the internet — no Stack Overflow questions, no GitHub repos, no documentation outside the company. Some claim no documentation inside the company either. It's been running production workloads for over two decades, and the only people who know it are the people who wrote it.
 
-When I pointed Claude at the first script, I expected nonsense. What I got was surprisingly coherent nonsense — close enough to be dangerous, wrong enough to be useless.
+When I pointed Claude at the first script, I expected nonsense. What I got was coherent nonsense. Close enough to be dangerous, wrong enough to be useless.
 
 Here's how to get from "almost right" to "parity test passed" without fine-tuning a single weight.
 
@@ -16,7 +16,7 @@ Here's how to get from "almost right" to "parity test passed" without fine-tunin
 
 LLMs are pattern matchers. They've seen Python, Java, C, COBOL, even some obscure languages that had a brief moment on GitHub. They generalize syntax patterns well. Hand them a language they've never seen, and they'll try to map it to the closest thing they know.
 
-That's the trap. The proprietary language looks like something the model knows. Some constructs resemble Python. Others look like C. Confident translation based on surface similarity — semantics thrown out the window.
+That's the trap. The proprietary language looks like something the model knows. Some constructs resemble Python. Others look like C. Confident translation based on surface similarity. Semantics thrown out the window.
 
 A keyword that looks like a loop might be a cursor operation. A function call that looks synchronous might trigger an asynchronous database write. The syntax is familiar. The behavior is not.
 
@@ -47,17 +47,15 @@ The spec doesn't teach the model to *read* the source language. It teaches the m
 
 ## Trial and Error
 
-**Reverse engineering before translation.** Take the hit at the beginning. Before translating a single line, have the model explore the source codebase bottom-up. Let it build the data structures itself. Find common patterns. Convert them into bigger constructs. Save the documentation it produces. Provide the file locations as reference for future translations.
+**Reverse engineering before translation.** Before translating a single line, have the model explore the source codebase bottom-up — let it build data structures, find common patterns, convert them into bigger constructs. Save the documentation it produces and provide file locations as reference for future translations.
 
 This front-loaded investment pays for itself immediately. The model doesn't just translate — it builds a map of the territory. Every subsequent translation is faster because the map already exists.
 
-**Construct-level mapping beats line-level translation.** Results improve when the spec describes semantic blocks ("this pattern is a database cursor loop, translate it to this Python pattern") rather than individual syntax elements. LLMs think in patterns, not in tokens.
+Construct-level mapping beats line-level translation. Results improve when the spec describes semantic blocks ("this pattern is a database cursor loop, translate it to this Python pattern") rather than individual syntax elements. LLMs think in patterns, not in tokens. And explicit negative examples help — "Do NOT use a Python for-loop here, even though it looks like one" is more effective than "use a while-loop with explicit cursor fetch." The model's instinct is to normalize to familiar patterns. You have to actively block the wrong ones.
 
-**Explicit negative examples.** "Do NOT use a Python for-loop here, even though it looks like one" is more effective than "use a while-loop with explicit cursor fetch." The model's instinct is to normalize to familiar patterns. You have to actively block the wrong ones.
+**One script at a time.** Context window management is critical. The spec, the source script, and the target output have to fit in a single context. No batch translation, no multi-file context.
 
-**One script at a time.** Context window management is critical. The spec, the source script, and the target output have to fit. No batch translation, no multi-file context. One script, one translation, one parity test.
-
-What didn't work: few-shot examples (model over-indexes on surface patterns, starts hallucinating constructs from examples into unrelated scripts), relying on the model's "understanding" (Opus can explain why a construct works and then translate it wrong — understanding is not compliance), and natural language specs ("this function writes to the database" isn't specific enough; you need parameter names, operation types, WHERE clause semantics).
+What didn't work: few-shot examples (model over-indexes on surface patterns, starts hallucinating constructs from examples into unrelated scripts), relying on the model's "understanding" (Opus can explain why a construct works and then translate it wrong; understanding is not compliance), and natural language specs ("this function writes to the database" isn't specific enough; you need parameter names, operation types, WHERE clause semantics).
 
 ## The Iteration Loop
 
@@ -81,7 +79,7 @@ The first script took multiple parity test failures before passing. Each failure
 
 This is the bet: the spec improves faster than the scripts get harder. If that holds, the pipeline scales. If not, it's fine-tuning time. Early signs say it holds.
 
-Nobody navigates capital cities by learning each street name. We use Google Maps. Same here — the model doesn't need to learn the language. It needs a good enough map. Model provides Python fluency, spec provides source language knowledge. Together, they do what neither can do alone.
+Nobody navigates capital cities by learning each street name. We use Google Maps. Same here. The model doesn't need to learn the language, it needs a good enough map. Model provides Python fluency, spec provides source language knowledge. Together, they do what neither can do alone.
 
 ---
 

@@ -25,7 +25,7 @@ For this system, that means: one agent for the Python 3 bridge architecture, one
 
 Each agent reviews from its own perspective. Bridge agent catches pattern violations. C runtime agent catches assumptions about memory layout or API behavior. And the scripting language agent catches gaps between what the spec says and what the code actually does.
 
-That last role matters most because it catches the biggest problem: **unbacked assumptions.** The frontier model makes assumptions constantly. In the planning phase. In the spec. In the implementation. "This function returns a list"... does it? "This error code means failure"... in every context? "This field is always populated"... are you sure?
+That last role matters most because it catches the biggest problem: **unbacked assumptions.** The frontier model makes assumptions constantly — in the planning phase, in the spec, in the implementation. "This function returns a list"... does it? "This error code means failure"... in every context? "This field is always populated"... are you sure?
 
 Without a domain expert agent that can check claims against the actual source, assumptions survive into implementation. The scripting language agent doesn't just verify behavior. It forces the model to show its work.
 
@@ -33,13 +33,13 @@ The pattern scales. New subsystem? New agent. The cost is context curation, not 
 
 ## The Workflow
 
-Three phases. Same review structure in each.
+Three phases, same review structure in each.
 
-**Planning.** A frontier model (largest tier) takes the task, breaks it into steps, identifies dependencies and risks. The domain agents review the plan. Does it fit the architecture? Are there unbacked assumptions? Loop until consensus. Then a human reviews. You disagree in the review? Then give the feedback and repeat the cycle.
+In **planning**, a frontier model (largest tier) takes the task, breaks it into steps, identifies dependencies and risks. Domain agents review the plan for architecture fit and unbacked assumptions. Loop until consensus, then a human reviews. Disagreement means feedback and another cycle.
 
-**Specification.** Same model writes the technical spec: interfaces, types, test cases, edge cases. Same agents review. Loop until consensus. Then a human reviews. Disagree? Feedback, repeat.
+In **specification**, the same model writes the technical spec: interfaces, types, test cases, edge cases. Same review loop.
 
-**Implementation.** A smaller, faster model implements against the spec. TDD — tests first, then code until tests pass. Same agents review the result. Loop until consensus. Then a human reviews. Disagree? Feedback, repeat.
+In **implementation**, a smaller, faster model codes against the spec with TDD. Same review loop.
 
 Every phase ends with a human — no exception. The agents reduce the noise. They catch pattern violations, architecture breaks, and spec-vs-reality mismatches before a human ever sees the code. Human review focuses on what AI still can't judge: is this the right thing to build?
 
