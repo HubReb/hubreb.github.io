@@ -10,64 +10,48 @@ A CI/CD-integrated code review system running local LLMs on a single 32GB VRAM G
 
 **Stack:** llama.cpp, FastAPI, Redis, FAISS + BM25 (hybrid RAG), Docker, GitLab CI/CD, Prometheus
 
-**Key decisions:**
-- Two-tier model setup: 70B-class dense model for MR reviews, 200B+ MoE for nightly deep reviews
-- Hybrid retrieval (semantic + keyword) for domain-aware context injection
-- Model hot-swap via Docker API to run different models on the same GPU
-- Q4_K_M quantization as the sweet spot for fitting serious models on consumer-grade hardware
+Two-tier model setup: 70B-class dense model for MR reviews, 200B+ MoE for nightly deep reviews. Hybrid retrieval (semantic + keyword) for domain-aware context injection. Model hot-swap via Docker API to run different models on the same GPU. Q4_K_M quantization as the sweet spot for fitting serious models on consumer-grade hardware.
 
 **Blog post:** [Local LLMs for Code Review](/blog/local-llm-code-review)
 
 ---
 
-## AI-Assisted Legacy Code Translation
+## Python 3 Migration Bridge
 
-A two-model pipeline translating 6,000+ scripts from a proprietary language (zero internet presence, no training data) to Python 3. Functional parity verified by database state comparison.
-
-**Stack:** Claude Opus (analysis + spec writing), Claude Sonnet (mechanical translation), Python 3, Oracle, PostgreSQL
-
-**Key decisions:**
-- Spec-driven translation instead of fine-tuning — the model doesn't learn the language, it follows a map
-- Reasoning model for architecture, execution model for translation — separation of concerns applied to AI tooling
-- Parity testing via database state snapshots as the only definition of "correct"
-- Reverse engineering bottom-up before translating a single line
-
-**Blog posts:** [Why the Smartest AI Agent Is the Worst Translator](/blog/smartest-agent-worst-translator) · [Teaching an LLM a Language It Has Never Seen](/blog/teaching-llm-unseen-language) · [Parity Testing](/blog/parity-testing)
-
----
-
-## AI-Assisted Y2038 and 32-bit to 64-bit Migration Strategy
-
-Analysis and migration strategy for Y2038 (Unix timestamp overflow) and 32-bit to 64-bit transition across a legacy system. AI-assisted scope reduction turned a 6-12 month estimate into 2-4 months by identifying which code paths actually touch timestamp-sensitive and architecture-dependent operations.
-
-**Approach:**
-- Automated static analysis to identify affected code paths
-- Classification of timestamp usage patterns (display-only vs. calculation vs. storage)
-- Prioritization by business impact rather than code location
-- Migration strategy that separates mechanical fixes from semantic changes
-
-**Blog posts:** [Y2038: When "Impossible" Means "Wrong Approach"](/blog/y2038-analysis) · [When "It Compiled" Is the Dangerous Part](/blog/lp64-analysis)
-
----
-
-## IPC Bridge: Python 3 Migration Without Rewriting Bindings
-
-A PTY-based interprocess bridge that connects Python 3 to a legacy C runtime without touching tens of thousands of lines of C++ bindings. A marker protocol over pseudo-terminal replaces embedded interpreter integration with process-isolated communication.
+PTY-based interprocess bridge connecting Python 3 to a legacy C runtime without touching tens of thousands of lines of C++ bindings. Instead of porting the embedded interpreter's bindings to the Python 3 C API, a marker protocol over pseudo-terminal replaces the entire integration approach.
 
 **Stack:** Python 3, PTY subprocess management, custom marker protocol, pytest
 
-**Key decisions:**
-- Process isolation instead of binding migration — route around the glue, don't rewrite it
-- Sequential send/wait/read protocol to avoid PTY race conditions
-- Text-based marker protocol for debuggability over efficiency
-- Repository and gateway layer on the Python 3 side for patterns that don't survive process boundaries
+Process isolation instead of binding migration. Sequential send/wait/read to avoid PTY race conditions. Text-based markers for debuggability. Repository and gateway layer for patterns that don't survive process boundaries.
 
 **Blog post:** [When You Can't Embed, Bridge](/blog/ipc-bridge)
 
 ---
 
+## Multi-Agent Development Workflow
+
+Development workflow for the Python 3 migration using frontier models with domain-specific review agents. Each part of the codebase has its own expert agent loaded with architecture docs and source. A reasoning model plans and specifies, an instruction-following model implements with TDD, and the domain agents review at every phase.
+
+**Stack:** Frontier model APIs, custom agents with RAG-augmented domain context, pytest
+
+The workflow itself is a sequential loop. The complexity is in what each agent knows, not how they're wired together.
+
+**Blog post:** [One Agent Per Domain, Zero Trust](/blog/multi-agent)
+
+---
+
+## Y2038 and LP64 Migration Analysis
+
+Risk analysis and migration roadmap for a 30+ year old 32-bit C codebase. The Y2038 work found a compile flag (`_TIME_BITS=64`) that reduced estimated effort from 12-18 months to 7-10 weeks. The LP64 analysis traced runtime crashes to 4 typedefs in a central header.
+
+**Stack:** C, GCC, `-Wconversion`, Oracle, grep
+
+Both migrations fix different code sites and share a canary deployment, bringing combined scope to 7-11 weeks instead of 18.
+
+**Blog posts:** [Y2038: When "Impossible" Means "Wrong Approach"](/blog/y2038-analysis) · [When "It Compiled" Is the Dangerous Part](/blog/lp64-analysis)
+
+---
+
 ## What's Next
 
-The translation pipeline is in early production. The bet: spec quality improves faster than script complexity increases. If that holds, the pipeline scales to the full 6,000+ script codebase. If not, the next step is fine-tuning on the growing corpus of verified translations.
-
-I'll document the journey here.
+More libraries to migrate, pilot scripts to validate, and a database layer to rebuild. Posts will follow when milestones are done.
