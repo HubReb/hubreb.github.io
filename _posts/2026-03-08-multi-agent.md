@@ -3,6 +3,7 @@ layout: post
 title: "One Agent Per Domain, Zero Trust"
 subtitle: "Why one should never use a single AI agent"
 tags: [ai, multi-agent, legacy-migration]
+permalink: /blog/multi-agent
 ---
 
 Migrating a 30+ year old system from a proprietary scripting language to Python 3: thousands of scripts. Hundreds of libraries. Business logic that nobody documented because "everyone knows how it works." Except the people who knew have left.
