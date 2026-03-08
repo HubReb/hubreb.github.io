@@ -40,6 +40,16 @@ The workflow itself is a sequential loop. The complexity is in what each agent k
 
 ---
 
+## Translation Pipeline & Verification
+
+Spec-driven translation of a proprietary scripting language to Python 3, without fine-tuning or training data. The model gets a translation spec instead of language knowledge. Verification through database state comparison: run the original, run the translation, diff.
+
+Key findings: reasoning models explore when they should comply — mechanical translation needs the instruction-following tier. Parity testing against the database is the only verification that doesn't depend on understanding a system nobody fully understands.
+
+**Blog posts:** [Why the Smartest AI Agent Is the Worst Translator](/blog/smartest-agent-worst-translator) · [Teaching an LLM a Language It Has Never Seen](/blog/teaching-llm-unseen-language) · [Parity Testing: The Only Definition of Correct](/blog/parity-testing)
+
+---
+
 ## Y2038 and LP64 Migration Analysis
 
 Risk analysis and migration roadmap for a 30+ year old 32-bit C codebase. The Y2038 work found a compile flag (`_TIME_BITS=64`) that reduced estimated effort from 12-18 months to 7-10 weeks. The LP64 analysis traced runtime crashes to 4 typedefs in a central header.
