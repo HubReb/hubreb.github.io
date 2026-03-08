@@ -20,7 +20,7 @@ And here's the part nobody talks about: the developers who wrote those scripts a
 
 **Code review** means a human reads the translated Python and decides "yes, this does the same thing." For trivial scripts, maybe. For anything involving cursor operations, implicit commits, type coercions, and state mutations across multiple tables, no human can reliably verify that by reading code. Especially not when the reviewer doesn't know what the original was supposed to do in the first place.
 
-**Integration tests** get closer but still require someone to define what "correct" means for each script. That's the entire problem. The original system *is* the definition of correct. Any test that doesn't compare against it is an opinion.
+**Integration tests** get closer but still require someone to define what "correct" means for each script. That's the entire problem. The original system is the definition of correct. Any test that doesn't compare against it is an opinion.
 
 ## The Parity Test
 
@@ -37,9 +37,9 @@ That's it. No test framework, no assertion library, no expected-value definition
 
 ## Why This Works for Legacy Migration
 
-Legacy systems are defined by their behavior, not by their documentation. Nobody wrote a spec for what the script is supposed to do. The script *does* what it does, and the business runs on that behavior. Any translation that changes that behavior is wrong, even if the change is "better."
+Legacy systems are defined by their behavior, not by their documentation. Nobody wrote a spec for what the script is supposed to do. The script does what it does, and the business runs on that behavior. Any translation that changes that behavior is wrong, even if the change is "better."
 
-This is counterintuitive for engineers who think in terms of improvement. The Python version should be cleaner, more efficient, more maintainable. And it will be. But first, it has to be *identical*. Refactoring comes after parity, not during.
+Engineers want to improve things during migration. The Python version should be cleaner, more efficient, more maintainable. And it will be. But first, it has to be *identical*. Refactoring comes after parity, not during.
 
 We have all seen translations that "improved" the original by handling edge cases more gracefully. They failed the parity test. The original's edge case behavior was the expected behavior. The improvement was a bug.
 
@@ -53,38 +53,20 @@ Which means you need to know which tables the script writes to. For a proprietar
 
 **Determinism** matters. If the script generates timestamps, random IDs, or sequence values, the outputs will differ even if the logic is identical. These need to be controlled: fixed timestamps, seeded randoms, pre-set sequences. Any source of non-determinism is a false negative waiting to happen.
 
-## What the Parity Test Catches
+## Scope and Limits
 
-**Semantic translation errors.** A construct that looks like a loop but behaves like a cursor. The output is different, the parity test catches it.
+The parity test catches semantic translation errors (cursor vs. loop), implicit behaviors (auto-commits Python doesn't have), type coercions (0 vs. NULL vs. None — one missed coercion, one wrong branch, one corrupted record), and order-of-operations bugs (dict ordering before Python 3.7). All invisible in code review. All obvious in a state comparison.
 
-**Implicit behaviors.** The original language auto-commits after certain operations. Python doesn't. Missing commit = different state.
+It doesn't catch performance regressions, non-database side effects (file writes, API calls, log entries), or bugs in the original. If the original has a bug, the translation must reproduce it. The parity test doesn't distinguish features from bugs. You fix bugs after parity, not during.
 
-**Type coercions.** The original silently converts strings to numbers in comparisons. Python doesn't. Different comparison result, different branch taken, different writes. The classic: the original treats 0 and NULL as equivalent. Python distinguishes between `0`, `None`, and `False`. One missed coercion, one wrong branch, one corrupted record.
+## Legacy Is Correct By Definition
 
-**Order of operations.** The original processes records in insertion order. The Python version uses a dict, which until 3.7 didn't guarantee order. Different processing order, different final state if operations aren't commutative.
+Parity testing means accepting that the legacy system is correct by definition. Not "well-designed." Correct as in "this is what the business runs on, and changing it is a business decision, not an engineering decision."
 
-All of these are invisible in code review. All of them are obvious in a state comparison.
+Every engineer wants to fix the bugs they find during migration. Don't. Translate first. Prove parity. Then open a ticket. Mixing migration and improvement is how legacy migrations fail.
 
-## What It Doesn't Catch
-
-**Performance.** A functionally identical script that takes 10x longer passes the parity test. Performance is a separate concern.
-
-**Non-database side effects.** File writes, API calls, log entries. The parity test only sees the database. Other side effects need separate verification.
-
-**Partial correctness.** If the original script has a bug, the translation must reproduce the bug. The parity test doesn't distinguish between features and bugs. That's a feature.
-
-## The Uncomfortable Truth
-
-Parity testing means accepting that the legacy system is correct by definition. Not correct as in "well-designed." Correct as in "this is what the business runs on, and changing it is a business decision, not an engineering decision."
-
-Every engineer wants to fix the bugs they find during migration. Don't. Translate first. Prove parity. Then open a ticket for the bug and fix it in the Python version with a proper change request. Mixing migration and improvement is how legacy migrations fail.
-
-## Takeaway
-
-If you're migrating legacy code with AI assistance, parity testing is not optional. It's the only verification that doesn't depend on human understanding of a system that humans have been failing to understand for decades.
-
-The database doesn't care how elegant the Python is. It cares whether the state is identical. Start there.
+The database doesn't care how elegant the Python is. It cares whether the state is identical.
 
 ---
 
-*I migrate decades-old systems to modern stacks — one script, one table, one timestamp at a time. I validate translations by asking the only witness that doesn't lie: the database. More on AI-assisted migration at [hubreb.github.io](https://hubreb.github.io/).*
+*Run the original. Run the translation. Compare. Everything else is opinion.*
