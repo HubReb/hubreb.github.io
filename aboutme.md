@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About Me
-subtitle: Software Engineer — Legacy Modernization & AI Tooling
+subtitle: Software Engineer — Systems Modernization & AI Tooling
 ---
 
 I'm a software engineer who works at the intersection of legacy systems and modern AI tooling. My day job involves migrating decades-old codebases to modern stacks — proprietary languages to Python 3, database layers to Java, undocumented business logic, and the kind of technical debt that accumulates when a system runs production workloads for 30+ years.
