@@ -6,7 +6,7 @@ tags: [llm, legacy-migration, ai-tooling]
 permalink: /blog/smartest-agent-worst-translator
 ---
 
-I'm migrating 6,000+ scripts from a proprietary language into Python 3. The language is old enough to vote. No LLM has seen it in training. The scripts run a legacy ERP system, and the only definition of "correct" is: the database looks identical after the translated version runs.
+Migrating 6,000+ scripts from a proprietary language into Python 3. The language is old enough to vote. No LLM has seen it in training. The scripts run a legacy ERP system, and the only definition of "correct" is: the database looks identical after the translated version runs.
 
 My instinct said: use the best model available. Opus. Extended thinking. Maximum reasoning power. Surely the smartest model handles the unknown best.
 
@@ -39,13 +39,13 @@ I spent a day watching Opus think beautifully about a task that needed no thinki
 The uncomfortable conclusion:
 
 | Task | Model | Why |
-|---|---|---|
+| --- | --- | --- |
 | Architecture decisions | Opus | Exploration is the point |
 | Script selection, dependency analysis | Opus | Pattern recognition across a large codebase |
 | Mechanical translation | Sonnet | Follow the spec, don't think about it |
 | Parity validation | Neither | Deterministic comparison, no LLM needed |
 
-80% of the migration pipeline is mechanical translation. The task where the most expensive model is the worst choice.
+80% of a migration pipeline is mechanical translation. The task where the most expensive model is the worst choice.
 
 ## The Workflow That Works
 
@@ -57,19 +57,19 @@ Opus never translates. Sonnet never architects. Separation of concerns — appli
 
 ## Why This Matters
 
-If you're using AI for legacy migration, you'll hit this wall. The smarter the model, the harder it is to make it do boring work. And migration is 80% boring work. The interesting 20% — understanding the codebase, identifying semantic traps, designing the target architecture — that's where you want the reasoning model. For everything else, you want the model that follows instructions without getting inspired.
+If we use AI for legacy migration, we hit this wall. The smarter the model, the harder it is to make it do boring work. And migration is 80% boring work. The interesting 20% — understanding the codebase, identifying semantic traps, designing the target architecture — that's where the reasoning model belongs. For everything else, use the model that follows instructions without getting inspired.
 
 ## First Results
 
-- First script: 2 hours, parity confirmed.
-- Expected throughput: 30-60 minutes per script as the workflow stabilizes.
-- Automation target: 60%+ without manual intervention. Below that, fine-tuning becomes the next step.
+* First script: 2 hours, parity confirmed.
+* Expected throughput: 30-60 minutes per script as the workflow stabilizes.
+* Automation target: 60%+ without manual intervention. Below that, fine-tuning becomes the next step.
 
 Early signs are good. The two-model split holds.
 
 ## Takeaway
 
-Match the model to the task, not to the prestige. The hardest part of legacy migration isn't the translation — it's the analysis before it. Use your reasoning budget where reasoning matters. For the rest, use the model that does what you say.
+Match the model to the task, not to the prestige. The hardest part of legacy migration isn't the translation — it's the analysis before it. Use the reasoning budget where reasoning matters. For the rest, use the model that does what it's told.
 
 The smartest agent in the room is not always the one you want writing the code.
 
