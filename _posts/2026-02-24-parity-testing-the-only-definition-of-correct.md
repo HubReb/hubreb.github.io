@@ -41,7 +41,7 @@ Legacy systems are defined by their behavior, not by their documentation. Nobody
 
 This is counterintuitive for engineers who think in terms of improvement. The Python version should be cleaner, more efficient, more maintainable. And it will be. But first, it has to be *identical*. Refactoring comes after parity, not during.
 
-I've seen translations that "improved" the original by handling edge cases more gracefully. They failed the parity test. The original's edge case behavior was the expected behavior. The improvement was a bug.
+We have all seen translations that "improved" the original by handling edge cases more gracefully. They failed the parity test. The original's edge case behavior was the expected behavior. The improvement was a bug.
 
 ## The Setup
 
