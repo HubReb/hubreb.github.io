@@ -8,7 +8,7 @@ permalink: /blog/teaching-llm-unseen-language
 
 The proprietary scripting language in this migration has zero presence on the internet — no Stack Overflow questions, no GitHub repos, no documentation outside the company. Some claim no documentation inside the company either. It's been running production workloads for over two decades, and the only people who know it are the people who wrote it.
 
-When I pointed Claude at the first script, I expected nonsense. What I got was coherent nonsense. Close enough to be dangerous, wrong enough to be useless.
+When I pointed a frontier model at the first script, I expected nonsense. What I got was coherent nonsense. Close enough to be dangerous, wrong enough to be useless.
 
 Here's how to get from "almost right" to "parity test passed" without fine-tuning a single weight.
 
@@ -55,7 +55,7 @@ Construct-level mapping beats line-level translation. Results improve when the s
 
 **One script at a time.** Context window management is critical. The spec, the source script, and the target output have to fit in a single context. No batch translation, no multi-file context.
 
-What didn't work: few-shot examples (model over-indexes on surface patterns, starts hallucinating constructs from examples into unrelated scripts), relying on the model's "understanding" (Opus can explain why a construct works and then translate it wrong; understanding is not compliance), and natural language specs ("this function writes to the database" isn't specific enough; you need parameter names, operation types, WHERE clause semantics).
+What didn't work: few-shot examples (model over-indexes on surface patterns, starts hallucinating constructs from examples into unrelated scripts), relying on the model's "understanding" (a reasoning model can explain why a construct works and then translate it wrong; understanding is not compliance), and natural language specs ("this function writes to the database" isn't specific enough; you need parameter names, operation types, WHERE clause semantics).
 
 ## The Iteration Loop
 

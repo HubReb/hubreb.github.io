@@ -1,8 +1,8 @@
+# About Me
+
 ---
-layout: page
-title: About Me
-subtitle: "Software Engineer — Legacy Modernization & AI Tooling"
----
+
+Software Engineer — Legacy Modernization & AI Tooling
 
 I'm a software engineer who works at the intersection of legacy systems and modern AI tooling. My day job involves migrating decades-old codebases to modern stacks — proprietary languages to Python 3, database layers to Java, undocumented business logic, and the kind of technical debt that accumulates when a system runs production workloads for 30+ years.
 
@@ -18,11 +18,11 @@ Current stack: Python 3, Java, C, C++, llama.cpp, FAISS, LLM APIs, FastAPI, Dock
 
 Computational linguistics by education. Software engineering by profession. I started in CPQ (Configure-Price-Quote) implementations for enterprise customers, moved into legacy system modernization, and found my niche where AI meets code that predates the internet.
 
-I've spent the last three years navigating proprietary languages, reverse-engineering database layers, and convincing management that a GPU is a legitimate business expense.
-
 ## What I Write About
 
-This blog documents what I learn while building AI tooling for real-world migration projects. No hype, no "AI will replace developers" takes. Just what works, what doesn't, and why the smartest model in the room isn't always the one you want writing the code.
+This blog documents what I learn while building AI tooling for real-world migration projects. No hype, no "AI will replace developers" takes. What works, what doesn't, and where the tools fall short.
+
+Posts come in batches. I write after a project milestone has been completed. There is no point in sharing experiences if your next post is "Forget all I said before, I made error x and lost two weeks of progress." Fun to read? Yes. Human? Yes. Any value in putting that online? No.
 
 ## Contact
 
