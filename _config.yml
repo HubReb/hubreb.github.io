@@ -28,6 +28,9 @@ future: true
 site-css:
   - "/assets/css/custom-styles.css"
 
+site-js:
+  - "/assets/js/goatcounter.js"
+
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
