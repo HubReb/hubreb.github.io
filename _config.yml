@@ -28,8 +28,12 @@ future: true
 site-css:
   - "/assets/css/custom-styles.css"
 
-site-js:
-  - "/assets/js/goatcounter.js"
+defaults:
+  - scope:
+      path: ""
+    values:
+      head-extra:
+        - goatcounter.html
 
 plugins:
   - jekyll-paginate
