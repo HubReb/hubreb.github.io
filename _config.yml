@@ -35,6 +35,9 @@ defaults:
       head-extra:
         - goatcounter.html
 
+exclude:
+  - CLAUDE.md
+
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
