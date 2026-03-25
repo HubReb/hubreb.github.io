@@ -12,7 +12,7 @@ A CI/CD-integrated code review system running local LLMs on a single 32GB VRAM G
 
 Two-tier model setup: 70B-class dense model for MR reviews, 200B+ MoE for nightly deep reviews. Hybrid retrieval (semantic + keyword) for domain-aware context injection. Model hot-swap via Docker API to run different models on the same GPU. Q4_K_M quantization as the sweet spot for fitting serious models on consumer-grade hardware.
 
-**Blog post:** [Local LLMs for Code Review](/blog/local-llm-code-review)
+**Blog posts:** [Local LLMs for Code Review](/blog/local-llm-code-review) · [When Nobody Reads the Code Anymore](/blog/knowledge-bottleneck)
 
 ---
 
