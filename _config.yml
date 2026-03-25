@@ -1,8 +1,8 @@
 remote_theme: daattali/beautiful-jekyll@6.0.1
 
-title: Rebekka Hubert
+title: "Rebekka Hubert — Software Engineer"
 author: Rebekka Hubert
-subtitle: Software Engineer
+description: "Software engineering, systems modernization, and AI-assisted development."
 
 navbar-links:
   About Me: "aboutme"
