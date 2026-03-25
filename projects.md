@@ -46,7 +46,7 @@ Spec-driven translation of a proprietary scripting language to Python 3, without
 
 Key findings: reasoning models explore when they should comply — mechanical translation needs the instruction-following tier. Parity testing against the database is the only verification that doesn't depend on understanding a system nobody fully understands.
 
-**Blog posts:** [Why the Smartest AI Agent Is the Worst Translator](/blog/smartest-agent-worst-translator) · [Teaching an LLM a Language It Has Never Seen](/blog/teaching-llm-unseen-language) · [Parity Testing: The Only Definition of Correct](/blog/parity-testing)
+**Blog posts:** [Why the Smartest AI Agent Is the Worst Translator](/blog/smartest-agent-worst-translator) · [Teaching an LLM a Language It Has Never Seen](/blog/teaching-llm-unseen-language) · [Parity Testing: The Only Definition of Correct](/blog/parity-testing) · [Conservative by Design: Transpiling Without Guessing](/blog/transpiler)
 
 ---
 
