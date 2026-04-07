@@ -11,6 +11,7 @@ navbar-links:
   Blog: "/"
 
 url: "https://hubreb.github.io"
+avatar: "/assets/img/avatar.svg"
 
 social-network-links:
   github: HubReb
