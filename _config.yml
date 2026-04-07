@@ -12,7 +12,6 @@ navbar-links:
 
 url: "https://hubreb.github.io"
 avatar: "/assets/img/avatar-square.png"
-share-image: "/assets/img/og-image.png"
 
 social-network-links:
   github: HubReb
@@ -35,6 +34,7 @@ defaults:
   - scope:
       path: ""
     values:
+      share-img: "/assets/img/og-image.png"
       head-extra:
         - goatcounter.html
 
