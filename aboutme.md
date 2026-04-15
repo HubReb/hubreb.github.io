@@ -6,7 +6,7 @@ subtitle: Software Engineer — Systems Modernization & AI Tooling
 
 I'm a software engineer who works at the intersection of legacy systems and modern AI tooling. My day job involves migrating decades-old codebases to modern stacks — proprietary languages to Python 3, analysis of database layers, undocumented business logic, and the kind of technical debt that accumulates when a system runs production workloads for 40+ years.
 
-I don't do greenfield. I work with what's already there.
+I work with what's already there.
 
 ## What I Do
 
@@ -20,10 +20,10 @@ Computational linguistics by education. Software engineering by profession. I st
 
 ## What I Write About
 
-This blog documents what I learn while building AI tooling for real-world migration projects. No hype, no "AI will replace developers" takes. What works, what doesn't, and where the tools fall short.
+This blog documents what I learn while building AI tooling for real-world migration projects. No hype. What works, what doesn't, and where the tools fall short.
 
 Posts come in batches. I write after a project milestone has been completed. There is no point in sharing experiences if your next post is "Forget all I said before, I made error x and lost two weeks of progress." Fun to read? Yes. Human? Yes. Any value in putting that online? No.
 
 ## Contact
 
-Find me on [LinkedIn](https://www.linkedin.com/in/rebekka-hubert-487692369) or reach out if your codebase is old enough to vote and you're looking for someone who's been there.
+Find me on [LinkedIn](https://www.linkedin.com/in/rebekka-hubert-487692369) or reach out if your codebase gives you migraines and you're looking for someone who's been there.
