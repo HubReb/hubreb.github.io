@@ -2,9 +2,8 @@
 layout: post
 title: "Quantifying a Legacy Codebase You Can't Rewrite"
 subtitle: "227 writes. Three semantic traps."
-date: 2026-04-15
 tags: [legacy-modernization, c, database, strangler-fig, migration]
-permalink: /blog/quantifying-legacy/
+permalink: /blog/quantifying-legacy
 ---
 
 I inherited a 40-year-old codebase.
