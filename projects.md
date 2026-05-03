@@ -62,6 +62,20 @@ Both migrations fix different code sites and share a canary deployment, bringing
 
 ---
 
+## Spec Kit Evaluation on Brownfield Codebases
+
+Four-post series evaluating GitHub's Spec Kit pipeline on two codebases: a curated full-stack toy app with planted bugs, and a three-year-old personal CLI with real history. Both runs were Constitution-driven. The brownfield case exposed extraction failures the toy case couldn't. Constitution-generation fabricates principles to fill template slots the codebase doesn't speak to. It also omits conscious decisions visible in commit history.
+
+**Stack (toy):** FastAPI, SQLAlchemy 2, aiosqlite, Uvicorn, pytest-asyncio, mypy (strict), pylint, black, slowapi  
+**Stack (CLI):** SQLAlchemy 2, Alembic, psycopg 3, PostgreSQL, Typer, Rich, cryptography, pybtex, ruff, mypy (strict), pytest-postgresql, uv, hatch  
+**Eval:** Spec Kit v0.7.5, Claude Code (Opus 4.7), git
+
+Three error categories surfaced: hallucination from gap, hallucination from over-tightening, omission. The first two are mechanically catchable through sharper principles plus self-audit at phase boundaries. Omission requires the original author with commit history open, which doesn't scale to legacy codebases whose authors are gone.
+
+**Blog posts:** [Spec Kit on a Brownfield Codebase](/blog/spec-kit-brownfield-setup) (post 1 of 4 in series)
+
+---
+
 ## What's Next
 
 More libraries to migrate, pilot scripts to validate, and a database layer to rebuild. Posts will follow when milestones are done.
