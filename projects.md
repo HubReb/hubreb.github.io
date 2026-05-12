@@ -72,7 +72,15 @@ Four-post series evaluating GitHub's Spec Kit pipeline on two codebases: a curat
 
 Three error categories surfaced: hallucination from gap, hallucination from over-tightening, omission. The first two are mechanically catchable through sharper principles plus self-audit at phase boundaries. Omission requires the original author with commit history open, which doesn't scale to legacy codebases whose authors are gone.
 
-**Blog posts:** [Spec Kit on a Brownfield Codebase](/blog/spec-kit-brownfield-setup) · [Auditing as You Go: What Corrections Actually Look Like](/blog/spec-kit-brownfield-self-audit) (posts 1 and 2 of 4 in series)
+**Blog posts:** [Spec Kit on a Brownfield Codebase](/blog/spec-kit-brownfield-setup) · [Auditing as You Go: What Corrections Actually Look Like](/blog/spec-kit-brownfield-self-audit) · [Implementing the Spec: Where Discipline Holds and Where It Slips](/blog/spec-kit-brownfield-implementation) · [Spec Kit's Fit and Limits in ERP Modernization](/blog/spec-kit-brownfield-applicability)
+
+---
+
+## Reflections on Engineering Culture
+
+What LLM-augmented engineering does to the institutions around the code: comprehension can't form fast enough, skill no longer predicts performance, and the institutional language has no name for the resulting asymmetries. Cross-cutting reflection rather than project documentation. Read or skip independently of the project posts.
+
+**Blog posts:** [Strangers in Our Own Code](/blog/strangers-in-our-own-code) · [When Nobody Reads the Code Anymore](/blog/knowledge-bottleneck)
 
 ---
 

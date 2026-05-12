@@ -80,4 +80,4 @@ That distinction is what shapes how the rest of the eval went. Some of the corre
 
 *One engineer's eval on two personal codebases over five sessions, with one tool that's still evolving.*
 
-*Next post: auditing as you go.*
+*Next post: [auditing as you go](/blog/spec-kit-brownfield-self-audit).*

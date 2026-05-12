@@ -8,7 +8,7 @@ permalink: /blog/spec-kit-brownfield-self-audit
 
 *"Claude Code might be over-eager and add components that you did not ask for."* is the warning spec kit includes in its own README.
 
-In the previous post, three categories of Constitution-extraction error were shown: hallucination from gap, hallucination from over-tightening and omission. The first two were catchable through self-audit at phase boundaries whereas the third was not.
+In the [previous post](/blog/spec-kit-brownfield-setup), three categories of Constitution-extraction error were shown: hallucination from gap, hallucination from over-tightening and omission. The first two were catchable through self-audit at phase boundaries whereas the third was not.
 
 Spec kit was run on the actual brownfield code base. 
 I made four audit moves. 
@@ -22,7 +22,7 @@ Let us look at this small empirical record of what self-audit looks like when Co
 
 ## Audit Move 1: The fabricated performance budget
 
-The first hallucination from Post 1's table was the one-second-per-ten-thousand-papers performance budget:
+The first hallucination from [Post 1's table](/blog/spec-kit-brownfield-setup) was the one-second-per-ten-thousand-papers performance budget:
 The Constitution stated it as a quantitative principle. 
 Yet, the codebase contained nothing to justify the number. 
 I had never measured performance beyond 'runs without pause and doesn't annoy me' - which is what most of my private projects use as benchmark.
@@ -40,7 +40,7 @@ The new principle rationale, verbatim:
 
 Two things to note: 
 The tool described its own past behaviour mechanically: 
-*"I inserted them to give the principle a testable shape but never grounded them in measurement"* is the fabrication pattern from Post 1: the Constitution-template required a quantitative slot, but the code base didn't supply one. Hence, the model produced a plausible default. 
+*"I inserted them to give the principle a testable shape but never grounded them in measurement"* is the fabrication pattern from [Post 1](/blog/spec-kit-brownfield-setup): the Constitution-template required a quantitative slot, but the code base didn't supply one. Hence, the model produced a plausible default. 
 The propagation across all five artefacts landed on the first response, with the version bump correctly classified as MINOR (relaxation rather than removal).
 
 It cannot be determined whether the tool would have caught the fabrication unprompted. The next audit gives stronger evidence on that question.
@@ -51,7 +51,7 @@ Two schema discrepancies surfaced in the design phase.
 The first: the modernised schema declared NOT NULL on most columns. Yet, the legacy `create_tables()` had bare INT/VARCHAR with no constraint. 
 The second: `bib.bibtex` was declared NOT NULL alongside an otherwise-correct UNIQUE translation. But the original had no NOT NULL there either.
 
-Both fall into Post 1's over-tightening category: a pattern read correctly (uniqueness, non-empty content) was inflated into stricter policy than the code actually enforced. 
+Both fall into [Post 1's over-tightening category](/blog/spec-kit-brownfield-setup): a pattern read correctly (uniqueness, non-empty content) was inflated into stricter policy than the code actually enforced. 
 I drafted the audit listing the two issues and sent it.
 
 The tool's response, verbatim:
@@ -128,7 +128,7 @@ The tool can then run the predicate against its own output and find violations.
 The autonomous retraction in Audit Move 1's wake was not a different kind of capability from the user-driven audits. 
 It was the same checking machinery, applied to a principle that had become verifiable enough to drive it.
 
-That matters for the omission category from Post 1.
+That matters for the omission category from [Post 1](/blog/spec-kit-brownfield-setup).
 Omission is the failure to elevate a pattern to a Constitution principle.
 If the pattern never becomes a principle, no sharpening can be done to it later, and no self-audit can find it.
 Sharpness mitigates the first two error categories.
@@ -167,7 +167,7 @@ The sharpness of the principle predicts which of these modes applies.
 Three open questions remain. 
 Intra-artefact correction and cross-artefact anticipation as additional modes appeared in this run but in places that took longer to read; the next post works through them.
 As for cross-session learning: Verifying this requires data across multiple sessions and is the subject of a separate evaluation. 
-Finally, the omission category from Post 1 remains beyond the reach of any sharpness-based mitigation: A pattern that never becomes a principle cannot be sharpened later.
+Finally, the omission category from [Post 1](/blog/spec-kit-brownfield-setup) remains beyond the reach of any sharpness-based mitigation: A pattern that never becomes a principle cannot be sharpened later.
 
 ---
 
@@ -175,4 +175,4 @@ Finally, the omission category from Post 1 remains beyond the reach of any sharp
 
 *One engineer's eval on two personal codebases over five sessions, with one tool that's still evolving.*
 
-*Next: Self-correction beyond the principle — intra-artefact and cross-artefact patterns.*
+*Next: [Self-correction beyond the principle — intra-artefact and cross-artefact patterns](/blog/spec-kit-brownfield-implementation).*
