@@ -80,7 +80,7 @@ Three error categories surfaced: hallucination from gap, hallucination from over
 
 What LLM-augmented engineering does to the institutions around the code: comprehension can't form fast enough, skill no longer predicts performance, and the institutional language has no name for the resulting asymmetries. Cross-cutting reflection rather than project documentation. Read or skip independently of the project posts.
 
-**Blog posts:** [Strangers in Our Own Code](/blog/strangers-in-our-own-code) · [When Nobody Reads the Code Anymore](/blog/knowledge-bottleneck)
+**Blog posts:** [When Nobody Reads the Code Anymore](/blog/knowledge-bottleneck)
 
 ---
 
