@@ -25,7 +25,7 @@ paginate: 5
 excerpt_length: 50
 
 timezone: "Europe/Berlin"
-future: true
+future: false
 
 site-css:
   - "/assets/css/custom-styles.css"
