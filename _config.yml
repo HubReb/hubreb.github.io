@@ -40,6 +40,10 @@ defaults:
 
 exclude:
   - CLAUDE.md
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - .github
 
 plugins:
   - jekyll-paginate
