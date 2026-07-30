@@ -58,7 +58,7 @@ Risk analysis and migration roadmap for a 30+ year old 32-bit C codebase. The Y2
 
 Both migrations fix different code sites and share a canary deployment, bringing combined scope to 7-11 weeks instead of 18.
 
-**Blog posts:** [Y2038: When "Impossible" Means "Wrong Approach"](/blog/y2038-analysis) · [When "It Compiled" Is the Dangerous Part](/blog/lp64-analysis)
+**Blog posts:** [Y2038: When "Impossible" Means "Wrong Approach"](/blog/y2038-analysis) · [When "It Compiled" Is the Dangerous Part](/blog/lp64-analysis) · [Quantifying a Legacy Codebase You Can't Rewrite](/blog/quantifying-legacy)
 
 ---
 
@@ -72,7 +72,7 @@ Four-post series evaluating GitHub's Spec Kit pipeline on two codebases: a curat
 
 Three error categories surfaced: hallucination from gap, hallucination from over-tightening, omission. The first two are mechanically catchable through sharper principles plus self-audit at phase boundaries. Omission requires the original author with commit history open, which doesn't scale to legacy codebases whose authors are gone.
 
-**Blog posts:** [Spec Kit on a Brownfield Codebase](/blog/spec-kit-brownfield-setup) · [Auditing as You Go: What Corrections Actually Look Like](/blog/spec-kit-brownfield-self-audit) · [Implementing the Spec: Where Discipline Holds and Where It Slips](/blog/spec-kit-brownfield-implementation) · [Spec Kit's Fit and Limits in ERP Modernization](/blog/spec-kit-brownfield-applicability) · [Don't Let a Model Grade Its Own Family](/blog/scorer-same-family-bias) · [Hard Gates Break the Weaker Model](/blog/offload-boundary)
+**Blog posts:** [Spec Kit on a Brownfield Codebase](/blog/spec-kit-brownfield-setup) · [Auditing as You Go: What Corrections Actually Look Like](/blog/spec-kit-brownfield-self-audit) · [Implementing the Spec: Where Discipline Holds and Where It Slips](/blog/spec-kit-brownfield-implementation) · [Spec Kit's Fit and Limits in ERP Modernization](/blog/spec-kit-brownfield-applicability) · [Don't Let a Model Grade Its Own Family](/blog/scorer-same-family-bias) · [Hard Gates Break the Weaker Model](/blog/offload-boundary) · [The Cards Are Always Face Up](/blog/cards-always-face-up)
 
 ---
 
