@@ -84,6 +84,16 @@ What LLM-augmented engineering does to the institutions around the code: compreh
 
 ---
 
+## Evaluating Tools
+
+Assessments of whether to adopt, build or decline a tool, each grounded in concrete code facts. Read independently of the project posts.
+
+Each entry states what was checked, what the evidence was, and what the decision cost.
+
+**Blog posts:** [The Tool You Deploy Is Not the One You Looked At](/blog/tool-you-deploy)
+
+---
+
 ## What's Next
 
 More libraries to migrate, pilot scripts to validate, and a database layer to rebuild. Posts will follow when milestones are done.
